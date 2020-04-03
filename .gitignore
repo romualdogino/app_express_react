@@ -11,4 +11,4 @@
 .env
 /config
 
-.key
+*.key
