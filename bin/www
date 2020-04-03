@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-
+var mongodb = require('./../config/db')
 var app = require('../app');
 var debug = require('debug')('app2:server');
 var http = require('http');

@@ -7,3 +7,8 @@
 
 # dependencies
 /client
+
+.env
+/config
+
+.key
