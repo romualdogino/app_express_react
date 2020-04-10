@@ -7,4 +7,4 @@ router.get('/', userController.getList)
 router.get('/:id',userController.getOne)
 router.post('/create', userController.create)
 
-module.exports = router;
+module.exports = router; 

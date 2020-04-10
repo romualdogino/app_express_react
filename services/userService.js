@@ -20,10 +20,14 @@ exports.getOne = async function (req, res) {
 exports.create = async function (data, res) {
     // console.log(data.body)
     var item = new User()
+    item.email = data.body.email
     item.login = data.body.login
     item.name = data.body.name
     item.pwd = data.body.pwd
     item.setor.push(data.body.setor)
+    item.is_super = data.body.is_super
+    item.is_admin = data.body.is_admin
+    item.is_ativo = data.body.is_ativo
 
     try {
         const saveItem = await item.save()

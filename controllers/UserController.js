@@ -24,6 +24,6 @@ exports.create = async function (req, res, next) {
 
     } catch (e) {
         res.json({ msg: e })
-    }
+    } 
 
 }

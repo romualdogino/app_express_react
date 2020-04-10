@@ -1,3 +1,4 @@
+"use strict"
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const saltRounds = 10;
@@ -16,13 +17,25 @@ const UserSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    email: {
+        type: String,
+        require: true
+    },
     avatar_url: {
         type: String,
         default: './img/avatar/default.png'
     },
     is_admin: {
-        type: Boolean,
-        default: false
+        type: String,
+        default: ""
+    },
+    is_super: {
+        type: String,
+        default: ""
+    },
+    is_ativo: {
+        type: String,
+        default: ""
     },
     setor: [],
     created: {
