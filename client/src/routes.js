@@ -7,6 +7,8 @@ import "./styles/rotas.css"
 import Signup from "./pages/Signup"
 import Sobre from "./pages/Sobre"
 import Login from "./pages/login"
+import Apoio from "./pages/Apoio"
+import Entrada from "./pages/Entrada"
 const Sair = () => {
     logout()
     return <Redirect to="/login" />
@@ -30,10 +32,13 @@ const Routes = () => (
         <Switch>
             <Route exact path="/login" component={Login} />
             <Route path="/logout" component={Sair} />
+            <PrivateRoute path="/apoio" component={ Apoio } />
+            <PrivateRoute path="/entrada" component={ Entrada } />
             <PrivateRoute path="/signup" component={ Signup } />
             <PrivateRoute path="/sobre" component={ Sobre } />
             <PrivateRoute path="/" component={() => <h1>tela principal</h1>} />
             <PrivateRoute path="/app" component={() => <h1>App</h1>} />
+            
             <Route path="*" component={() => <h1>Page not found</h1>} />
         </Switch>
 

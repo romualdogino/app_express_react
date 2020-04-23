@@ -14,8 +14,15 @@ const helmet = require('helmet')
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/usersRouter');
 const authRouter = require('./routes/authRouter')
+const statusRouter = require('./routes/statusRouter')
+const tipoitemRouter = require('./routes/tipoitemRouter')
+const entradaRouter = require('./routes/entradaRouter')
+const itemRouter = require('./routes/itemRoute')
+const clienteRouter = require('./routes/clienteRoute')
+
 const app = express();
 app.use(cors())
+
 var corsOptions = {
   origin: 'http://localhost:3001/',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
@@ -31,6 +38,7 @@ function verifyJWT(req, res, next) {
   jwt.verify(token, publicKey, { algorithm: ["RS256"] }, function (err, decoded) {
     if (err)
       return res.status(500)
+
         .send({ auth: false, message: 'Failed to authenticate token.' });
 
     // se tudo estiver ok, salva no request para uso posterior
@@ -54,23 +62,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/users', verifyJWT, (req, res, next) => {
   usersRouter(req, res, next)
 })
+app.use('/status', verifyJWT, (req, res, next) => {
+  statusRouter(req, res, next)
+})
+app.use('/tipoitem', verifyJWT, (req, res, next) => {
+  tipoitemRouter(req, res, next)
+})
+app.use('/entrada', verifyJWT, (req, res, next) => {
+  entradaRouter(req, res, next)
+})
+app.use('/item', verifyJWT,(req, res, next) => {
+  itemRouter(req, res, next)
+})
+app.use('/cliente', verifyJWT, (req, res, next) =>{
+  clienteRouter(req, res, next)
+})
 
 app.use('/auth', authRouter)
-// app.post('/login', (req, res, next) => {
-//   if (req.body.user === 'luiz' && req.body.pwd === '123') {
-//     const id = 1; //esse id viria do banco de dados
-//     const privateKey = fs.readFileSync('./private.key', 'utf8')
-//     var token = jwt.sign({ id }, privateKey, {
-//       expiresIn: 30000, // expires in 5min
-//       algorithm: "RS256"
-//     });
-//     return res.status(200).header({ token: token }).send({ auth: true, token: token });
-//   }
-//   res.status(500).send('Login inválido!');
-// })
-
-// app.get('/logout', function (req, res) {
-//   res.status(200).send({ auth: false, token: null });
-// })
 
 module.exports = app

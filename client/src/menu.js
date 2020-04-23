@@ -15,18 +15,18 @@ const Menu = () => (
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-                <Nav.Link href="#features">Features</Nav.Link>
+                <Nav.Link as={Link} to="/entrada" href="#">Entrada</Nav.Link>
                 <Nav.Link href="#pricing">Pricing</Nav.Link>
                 <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                     <NavDropdown.Item as={Link} to="/signup" href="#">Cadastro de Usuário</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/apoio" href="#">Base para apoio</NavDropdown.Item>
                     <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                 </NavDropdown>
             </Nav>
             <Nav>
-                <Nav.Link as={Link}  href="#" to="/sobre">Sobre</Nav.Link>
+                <Nav.Link as={Link} href="#" to="/sobre">Sobre</Nav.Link>
                 <Nav.Link as={Link} to="/" href="#">Entrar</Nav.Link>
                 <Nav.Link as={Link} to="/logout" href="#">Sair</Nav.Link>
             </Nav>

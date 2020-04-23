@@ -4,11 +4,16 @@ const mongoose = require('mongoose')
 const StatusSchema = new mongoose.Schema({
     codigo: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
+        
     },
     nome: {
         type: String,
-        required: true
+        required: true,
+    },
+    descricao:{
+        type: String,
     },
     usadopor: {
         type: String,

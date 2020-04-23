@@ -17,7 +17,7 @@ state = {
 handleCadastroUser = async e => {
     e.preventDefault()
     this.setState({ error: "" })
-    // console.log(this.state)
+    //n cosole.log(this.state)
     const { user, pwd } = this.state
     if (!user || !pwd) {
         this.setState({ error: "Preencha os campos" })
@@ -29,6 +29,7 @@ handleCadastroUser = async e => {
                 console.log(data.data)
                 login(data.data.token)
             })
+            
 
             this.props.history.push("/")
 
